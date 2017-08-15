@@ -10,7 +10,7 @@ cp board/jumpnow/${BOARD_NAME}/cmdline.txt ${BINARIES_DIR}/cmdline.txt
 
 echo "HEY! UBOOT STILL HAS TO GET MOVED!"
 if [-e ${BUILD_DIR}/uboot*/uboot.bin]
-	echo "MOVING UBOOT NEEDS TO BE DONE!!!"
+	cp output/build/uboot-${UBOOT_VERSION}/u-boot.bin ${BINARIES_DIR}/
 fi
 
 rm -rf "${GENIMAGE_TMP}"
