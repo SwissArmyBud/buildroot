@@ -8,7 +8,10 @@ GENIMAGE_TMP="${BUILD_DIR}/genimage.tmp"
 cp board/jumpnow/${BOARD_NAME}/config.txt ${BINARIES_DIR}/config.txt
 cp board/jumpnow/${BOARD_NAME}/cmdline.txt ${BINARIES_DIR}/cmdline.txt
 
-mv ${BINARIES_DIR}/zImage ${BINARIES_DIR}/kernel7.img
+echo "HEY! UBOOT STILL HAS TO GET MOVED!"
+if [-e ${BUILD_DIR}/uboot*/uboot.bin]
+	echo "MOVING UBOOT NEEDS TO BE DONE!!!"
+fi
 
 rm -rf "${GENIMAGE_TMP}"
 
