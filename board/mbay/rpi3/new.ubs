@@ -1,0 +1,3 @@
+setenv testparam "SUCCESS"
+echo "Test Param:"
+printenv testparam
