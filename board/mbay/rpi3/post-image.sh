@@ -12,17 +12,9 @@ echo "start_x=1" >> ${BINARIES_DIR}/config.txt
 echo "enable_uart=1" >> ${BINARIES_DIR}/config.txt
 cp board/mbay/${BOARD_NAME}/cmdline.txt ${BINARIES_DIR}/cmdline.txt
 
-# If UBoot exists and has been built, move to binaries directory and enable as 2nd stage kernel
-if [ -e ${BUILD_DIR}/uboot-${UBOOT_VERSION}/u-boot.bin ]; then
-	echo "Found uboot binary, moving to output..."
-	cp output/build/uboot-${UBOOT_VERSION}/u-boot.bin ${BINARIES_DIR}/
+# If UBoot exists, enable as 2nd stage kernel
+if [ -e ${BINARIES_DIR}/u-boot.bin ]; then
 	echo "kernel=u-boot.bin" >> ${BINARIES_DIR}/config.txt
-fi
-
-# Add UBoot boot script to the binaries directory
-if [ -e ${BUILD_DIR}/uboot-${UBOOT_VERSION}/boot.scr ]; then
-	echo "Found uboot script, moving to output..."
-	cp ${BUILD_DIR}/uboot-${UBOOT_VERSION}/boot.scr ${BINARIES_DIR}
 fi
 
 # Rename fresh linux kernel to expected value for pi
