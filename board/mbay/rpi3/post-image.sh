@@ -17,6 +17,12 @@ if [ -e ${BINARIES_DIR}/u-boot.bin ]; then
 	echo "kernel=u-boot.bin" >> ${BINARIES_DIR}/config.txt
 fi
 
+# If UBoot environment exists, rename to expected value (TODO: PATCH UBOOT)
+if [ -e ${BINARIES_DIR}/uboot-env.bin ]; then
+        mv ${BINARIES_DIR}/uboot-env.bin ${BINARIES_DIR}/uboot.env
+fi
+
+
 # Rename fresh linux kernel to expected value for pi
 if [ -e ${BINARIES_DIR}/zImage ]; then
 	mv ${BINARIES_DIR}/zImage ${BINARIES_DIR}/kernel7.img

@@ -12,7 +12,7 @@ rootpart=/dev/mmcblk0p
 bootpart=2
 core_args=rootwait 8250.nr_uarts=1 console=ttyS0,115200
 setbootargs=setenv bootargs ${core_args} root=${rootpart}${bootpart}
-bootdelay=2
+bootdelay=3
 cpu=armv7
 fdt_addr_r=0x2000000
 fdt_high=fffffffff
@@ -26,7 +26,7 @@ loadkernel=fatload mmc 0:1 ${kernel_addr_r} ${kernel_file}
 piboot=run setbootargs; run loadmmc; bootz ${kernel_addr_r} - ${fdt_addr_r}
 preboot=echo \n***\nWelcome to the MBay boot solution...\n***\n
 script_addr=0x02000000
-script_name=test.img
+script_name=boot.scr
 serial#=0000000040734d70
 soc=bcm283x
 stderr=serial,vidconsole
