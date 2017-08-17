@@ -19,10 +19,23 @@ if [-e ${BUILD_DIR}/uboot-${UBOOT_VERSION}/u-boot.bin]
 	echo "kernel=u-boot.bin" >> ${BINARIES_DIR}/config.txt
 fi
 
-# If Linux has been freshly built, ensure the kernel is appropriately named for 2nd or 3rd stage boot
-if [-e ${BINARIES_DIR}/zImage]
-	echo "Found raw kernel binary, renaming in output..."
+# Add UBoot boot script to the binaries directory
+if [ -e ${BUILD_DIR}/uboot-${UBOOT_VERSION}/boot.scr ]; then
+	echo "Found uboot script, moving to output..."
+	cp ${BUILD_DIR}/uboot-${UBOOT_VERSION}/boot.scr ${BINARIES_DIR}
+fi
+
+# Rename fresh linux kernel to expected value for pi
+if [ -e ${BINARIES_DIR}/zImage ]; then
+	echo "Found fresh linux binary, renaming for pi boot..."
 	mv ${BINARIES_DIR}/zImage ${BINARIES_DIR}/kernel7.img
+fi
+
+# Copy needed files from rpi-firmware and clean out the rest
+if [ -d ${BINARIES_DIR}/rpi-firmware ]; then
+	rm -f ${BINARIES_DIR}/rpi-firmware/*.txt
+	mv ${BINARIES_DIR}/rpi-firmware/* ${BINARIES_DIR}
+	rm -rf ${BINARIES_DIR}/rpi-firmware
 fi
 
 # Clear the image building directory and rebuild the new binary system image
