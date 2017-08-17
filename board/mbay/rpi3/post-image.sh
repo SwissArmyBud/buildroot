@@ -19,7 +19,6 @@ fi
 
 # Rename fresh linux kernel to expected value for pi
 if [ -e ${BINARIES_DIR}/zImage ]; then
-	echo "Found fresh linux binary, renaming for pi boot..."
 	mv ${BINARIES_DIR}/zImage ${BINARIES_DIR}/kernel7.img
 fi
 
