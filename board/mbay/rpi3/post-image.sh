@@ -13,7 +13,7 @@ echo "enable_uart=1" >> ${BINARIES_DIR}/config.txt
 cp board/mbay/${BOARD_NAME}/cmdline.txt ${BINARIES_DIR}/cmdline.txt
 
 # If UBoot exists and has been built, move to binaries directory and enable as 2nd stage kernel
-if [-e ${BUILD_DIR}/uboot-${UBOOT_VERSION}/u-boot.bin]
+if [ -e ${BUILD_DIR}/uboot-${UBOOT_VERSION}/u-boot.bin ]; then
 	echo "Found uboot binary, moving to output..."
 	cp output/build/uboot-${UBOOT_VERSION}/u-boot.bin ${BINARIES_DIR}/
 	echo "kernel=u-boot.bin" >> ${BINARIES_DIR}/config.txt
