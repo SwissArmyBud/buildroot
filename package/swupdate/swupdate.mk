@@ -4,8 +4,9 @@
 #
 ################################################################################
 
-SWUPDATE_VERSION = 2017.07
-SWUPDATE_SITE = $(call github,sbabic,swupdate,$(SWUPDATE_VERSION))
+SWUPDATE_VERSION = master
+SWUPDATE_SITE = https://github.com/SwissArmyBud/swupdate
+SWUPDATE_SITE_METHOD = git
 SWUPDATE_LICENSE = GPL-2.0+, MIT, Public Domain
 SWUPDATE_LICENSE_FILES = COPYING
 
