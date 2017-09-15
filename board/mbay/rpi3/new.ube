@@ -1,35 +1,41 @@
 
 arch=arm
-baudrate=115200
 board=rpi
 board_name=3 Model B
 board_rev=0x8
 board_rev_scheme=1
 board_revision=0xA02082
-load_script=load mmc 0:1 ${script_addr} ${script_name}; source ${script_addr}
-bootcmd=run load_script; run piboot
-rootpart=/dev/mmcblk0p
-bootpart=2
-core_args=rootwait 8250.nr_uarts=1 console=ttyS0,115200
-setbootargs=setenv bootargs ${core_args} root=${rootpart}${bootpart}
-bootdelay=3
-cpu=armv7
-fdt_addr_r=0x2000000
 fdt_high=fffffffff
 dtcontroladdr=3af5e1e8f
-fdt_file=bcm2710-rpi-3-b.dtb
-kernel_addr_r=0x01000000
-kernel_file=kernel7.img
-loadmmc=run loadkernel; run loadfdt;
-loadfdt=fatload mmc 0:1 ${fdt_addr_r} ${fdt_file}
-loadkernel=fatload mmc 0:1 ${kernel_addr_r} ${kernel_file}
-piboot=run setbootargs; run loadmmc; bootz ${kernel_addr_r} - ${fdt_addr_r}
-preboot=echo ----- Welcome to the MBay multi-boot solution -----
+cpu=armv7
+soc=bcm283x
+vendor=mbay
+serial#=0000000040734d70
+bootdelay=3
+preboot=echo ""; echo ${motd}; echo "";
+motd="-----  Welcome to the MBay PiBoot System  -----"
+bootcmd=run load_script; run safeboot; run piboot;
+load_script=load mmc 0:1 ${script_addr} ${script_name}; source ${script_addr};
 script_addr=0x02000000
 script_name=boot.scr
-serial#=0000000040734d70
-soc=bcm283x
-stderr=serial,vidconsole
-stdin=serial,usbkbd
-stdout=serial,vidconsole
-vendor=mbay
+piboot=run setbootargs; run loadmmc; bootz ${kernel_addr_r} - ${fdt_addr_r}
+setbootargs=setenv bootargs ${core_args} root=${bootdevice}${bootpart}; if itest ${enableconsole} == 1; then setenv bootargs ${bootargs} console=${serialport},${baudrate}; fi;
+core_args=rootwait
+serialport=ttyS0
+baudrate=115200
+bootdevice=/dev/mmcblk0p
+bootpart=2
+loadmmc=run loadfdt; run loadkernel;
+loadfdt=fatload mmc 0:1 ${fdt_addr_r} ${fdt_file}
+fdt_addr_r=0x2000000
+fdt_file=bcm2710-rpi-3-b.dtb
+loadkernel=fatload mmc 0:1 ${kernel_addr_r} ${kernel_file}
+kernel_addr_r=0x01000000
+kernel_file=kernel7.img
+safeboot=run gpiocheck; run countercheck;
+recoverypart=4
+gpiocheck=gpio input ${gpio_test_pin}; if itest $? == 0; then setenv bootpart ${recoverypart}; fi;
+gpio_test_pin=4
+countercheck=setexpr bootcount ${bootcount} + 1; if itest ${bootcount} >= ${bootlimit}; then setenv bootpart ${recoverypart}; fi;
+bootcount=0
+bootlimit=5
