@@ -68,7 +68,6 @@ arm_juno_defconfig: *defconfig
 armadeus_apf27_defconfig: *defconfig
 armadeus_apf28_defconfig: *defconfig
 armadeus_apf51_defconfig: *defconfig
-armadeus_apf9328_defconfig: *defconfig
 at91sam9260eknf_defconfig: *defconfig
 at91sam9g20dfc_defconfig: *defconfig
 at91sam9g45m10ek_defconfig: *defconfig
@@ -121,7 +120,9 @@ grinn_chiliboard_defconfig: *defconfig
 grinn_liteboard_defconfig: *defconfig
 imx23evk_defconfig: *defconfig
 imx6q-sabresd_defconfig: *defconfig
+imx6q-sabresd_qt5_defconfig: *defconfig
 imx6ulpico_defconfig: *defconfig
+imx7dpico_defconfig: *defconfig
 lego_ev3_defconfig: *defconfig
 linksprite_pcduino_defconfig: *defconfig
 minnowboard_max-graphical_defconfig: *defconfig
@@ -206,6 +207,7 @@ toradex_apalis_imx6_defconfig: *defconfig
 ts4800_defconfig: *defconfig
 ts4900_defconfig: *defconfig
 ts5x00_defconfig: *defconfig
+ts7680_defconfig: *defconfig
 wandboard_defconfig: *defconfig
 warp7_defconfig: *defconfig
 warpboard_defconfig: *defconfig
