@@ -1,0 +1,9 @@
+comment "SWupdate runner for systemV/udev/node"
+config BR2_PACKAGE_SWUPDATED
+	bool "SWupdated"
+	depends on BR2_PACKAGE_HAS_UDEV
+	depends on BR2_PACKAGE_SWUPDATE
+	depends on BR2_INIT_SYSV
+	select BR2_PACKAGE_NODEJS
+	help
+	  Provides a daemon to run SWupdate on update files when drives are inserted.
