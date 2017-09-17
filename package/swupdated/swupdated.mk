@@ -21,7 +21,7 @@ endef
 SWUPDATED_POST_INSTALL_TARGET_HOOKS += SWUPDATED_COPY_SCRIPT_TO_TARGET
 
 define SWUPDATED_COPY_SERVER_TO_TARGET
-	cat $(BUILD_DIR)/swupdated-$(SWUPDATED_VERSION)/socketserver.js | sed -e 's|//.*||g' -e '/^\s*$/d' > $(TARGET_DIR)/etc/udev/server.js
+	cat $(BUILD_DIR)/swupdated-$(SWUPDATED_VERSION)/socketserver.js | sed -e 's|//.*||g' | awk 'NF' > $(TARGET_DIR)/etc/udev/server.js
 	echo "  - FINISHED!"
 endef
 SWUPDATED_POST_INSTALL_TARGET_HOOKS += SWUPDATED_COPY_SERVER_TO_TARGET
