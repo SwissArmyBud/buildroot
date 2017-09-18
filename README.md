@@ -24,7 +24,7 @@ The changes made by JumpNow (and kept here) are the following:
   - Sample FS overlays provided (sysinit, etc)
   - Build patches download and compile Device Tree Blobs from source
 
-## SwissArmyBud Changes
+### SwissArmyBud Changes
 The changes made by this repo are as follows:
   - Added Raspberry Pi BlueTooth firmware download/compile
     - Plus Bluez5, Bluez Tools, ConnMan, BMon
