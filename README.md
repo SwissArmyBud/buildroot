@@ -11,7 +11,7 @@ This is a 2nd level fork of the [BuildRoot Project.](https://buildroot.org/) The
   2. Enter the repo and run 'git checkout mbay'
   3. Run 'make mbay_rpi3_defconfig'
   4. Run 'make'
-  5. When the build is finished 'dd' the rpi-sdcard.img in "/output/images" to an SD card.
+  5. When the build is finished, copy "output/images/rpi-sdcard.img" to an SD card
   6. Insert the SD card into the Raspberry Pi and power on with a serial cable on GPIOs 14/15/GND
 
   
@@ -30,7 +30,7 @@ The changes made by this repo are as follows:
     - Plus Bluez5, Bluez Tools, ConnMan, BMon
   - Added "ifupdown" and associated scripts
   - Added "SystemV" init system skeleton
-  - Full Node.js and NPM support
+  - Full Node.js and NPM support, plus PM2
   - Full Git, Curl, and WGet support
   - Both Vim and Nano included
   - Full RTSP/Camera Streaming Support:
