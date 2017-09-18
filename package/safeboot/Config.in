@@ -1,0 +1,5 @@
+config BR2_PACKAGE_SAFEBOOT
+	bool "SafeBoot"
+	depends on BR2_TARGET_UBOOT
+	help
+	  Provides a SafeBoot UBoot system.
