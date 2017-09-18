@@ -43,6 +43,9 @@ The changes made by this repo are as follows:
 	- [UBoot](https://github.com/u-boot/u-boot)
 	  - [SafeBoot](https://github.com/SwissArmyBud/SafeBoot) add-on
 
+## Architechture
+<p align ="center"><img src=BuildRootArch.png width=100%/></p>
+
 
 # --- ORIGINAL DOCUMENTATION BELOW ---
 Buildroot is a simple, efficient and easy-to-use tool to generate embedded
